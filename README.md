@@ -1,6 +1,6 @@
 # Wordpress Basic Auth
 
-Package mínimo para autenticación básica con WordPress en Laravel.
+Package para autenticación básica y CRUD de posts en WordPress desde Laravel.
 
 ## Instalación
 ```sh
@@ -12,6 +12,17 @@ php artisan migrate
 ```sh
 php artisan wordpress:store-credentials https://example.com admin password
 php artisan wordpress:ping https://example.com
+```
+
+### Uso del servicio WordpressPostService
+```php
+use Luinuxscl\WordpressBasicAuth\Services\WordpressPostService;
+
+$service = new WordpressPostService();
+$posts = $service->getPosts('https://example.com');
+$post = $service->createPost('https://example.com', ['title' => 'Nuevo Post', 'content' => 'Contenido del post']);
+$updatedPost = $service->updatePost('https://example.com', 1, ['title' => 'Título actualizado']);
+$service->deletePost('https://example.com', 1);
 ```
 
 ## Pruebas
