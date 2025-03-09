@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('site_url')->unique();
             $table->string('username');
             $table->string('password');
+            $table->boolean('is_connected')->default(false);
             $table->timestamps();
         });
     }

@@ -14,7 +14,10 @@ php artisan wordpress:store-credentials https://example.com admin password
 php artisan wordpress:ping https://example.com
 ```
 
-### Uso del servicio WordpressPostService
+### Verificación de conexión automática
+Cuando se almacenan credenciales, el sistema intentará hacer `ping` al WordPress y guardará si hay conexión o no.
+
+## Uso del servicio WordpressPostService
 ```php
 use Luinuxscl\WordpressBasicAuth\Services\WordpressPostService;
 

@@ -23,7 +23,8 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__ . '/../config/wordpress_basic_auth.php' => config_path('wordpress_basic_auth.php'),
+                __DIR__ . '/../config/wordpress_basic_auth.php' =>
+                config_path('wordpress_basic_auth.php'),
             ], 'wordpress-basic-auth-config');
         }
     }
