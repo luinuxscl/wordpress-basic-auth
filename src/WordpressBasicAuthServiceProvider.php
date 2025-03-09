@@ -19,6 +19,7 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
             $this->commands([
                 \Luinuxscl\WordpressBasicAuth\Console\StoreCredentialsCommand::class,
                 \Luinuxscl\WordpressBasicAuth\Console\PingWordpressCommand::class,
+                \Luinuxscl\WordpressBasicAuth\Console\GetCredentialsCommand::class,
             ]);
 
             $this->publishes([
