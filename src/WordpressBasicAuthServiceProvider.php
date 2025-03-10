@@ -18,18 +18,8 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'wordpress-basic-auth');
 
-        // Register Livewire components
         if (class_exists(\Livewire\Livewire::class)) {
-            // Para Livewire v3
-            if (method_exists(\Livewire\Livewire::class, 'component')) {
-                \Livewire\Livewire::component('create-wordpress-credential', CreateWordpressCredential::class);
-            } 
-            // Para Livewire v2
-            else if (method_exists(\Livewire\Livewire::class, 'components')) {
-                \Livewire\Livewire::components([
-                    'create-wordpress-credential' => CreateWordpressCredential::class,
-                ]);
-            }
+            \Livewire\Livewire::discover(__DIR__ . '/../livewire.php');
         }
 
         if ($this->app->runningInConsole()) {
