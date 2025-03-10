@@ -10,7 +10,7 @@ class WordpressService
     public static function checkConnection($siteUrl, $username, $password)
     {
         $response = Http::withBasicAuth($username, $password)
-            ->get("{$siteUrl}/wp-json/wp/v2/posts");
+            ->get("{$siteUrl}/wp-json/wp/v2/users/me");
 
         return $response->successful();
     }

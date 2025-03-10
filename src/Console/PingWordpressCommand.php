@@ -24,8 +24,10 @@ class PingWordpressCommand extends Command
         $response = Http::withBasicAuth($credential->username, $credential->password)->get("{$siteUrl}/wp-json/wp/v2/posts");
 
         if ($response->successful()) {
+            $credential->update(['is_connected' => true]);
             $this->info("Conexión exitosa con {$siteUrl}");
         } else {
+            $credential->update(['is_connected' => false]);
             $this->error("Error al conectar con {$siteUrl}: " . $response->status());
         }
     }
