@@ -21,10 +21,12 @@ class ListSitesCommand extends Command
 
         $this->info('Sitios con credenciales almacenadas:');
         $this->table(
-            ['URL del sitio'],
+            ['Identificador', 'URL del sitio', 'Estado de conexión'],
             $credentials->map(function ($credential) {
                 return [
+                    $credential->identifier,
                     $credential->site_url,
+                    $credential->is_connected ? 'Conectado' : 'Desconectado',
                 ];
             })
         );

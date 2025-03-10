@@ -9,7 +9,8 @@ return new class extends Migration {
     {
         Schema::create('wordpress_credentials', function (Blueprint $table) {
             $table->id();
-            $table->string('site_url')->unique();
+            $table->string('identifier')->unique();
+            $table->string('site_url')->index();
             $table->string('username');
             $table->string('password');
             $table->boolean('is_connected')->default(false);

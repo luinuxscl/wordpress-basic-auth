@@ -3,6 +3,8 @@
 namespace Luinuxscl\WordpressBasicAuth;
 
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Luinuxscl\WordpressBasicAuth\Livewire\CreateWordpressCredential;
 
 class WordpressBasicAuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,12 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'wordpress-basic-auth');
+
+        // Register Livewire components
+        if (class_exists(Livewire::class)) {
+            Livewire::component('create-wordpress-credential', CreateWordpressCredential::class);
+        }
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -26,6 +34,11 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/wordpress_basic_auth.php' =>
                 config_path('wordpress_basic_auth.php'),
             ], 'wordpress-basic-auth-config');
+
+            // Publish views
+            $this->publishes([
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/wordpress-basic-auth'),
+            ], 'wordpress-basic-auth-views');
         }
     }
 }
