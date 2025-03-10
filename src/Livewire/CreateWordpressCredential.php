@@ -67,7 +67,7 @@ class CreateWordpressCredential extends Component
     }
 
     public function render()
-    {
-        return view('livewire.create-wordpress-credential');
-    }
+{
+    return view('wordpress-basic-auth::livewire.create-wordpress-credential');
+}
 }

@@ -20,7 +20,16 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
 
         // Register Livewire components
         if (class_exists(Livewire::class)) {
-            Livewire::component('create-wordpress-credential', CreateWordpressCredential::class);
+            // Para Livewire v3
+            if (method_exists(Livewire::class, 'component')) {
+                Livewire::component('create-wordpress-credential', CreateWordpressCredential::class);
+            } 
+            // Para Livewire v2
+            else if (method_exists(Livewire::class, 'components')) {
+                Livewire::components([
+                    'create-wordpress-credential' => CreateWordpressCredential::class,
+                ]);
+            }
         }
 
         if ($this->app->runningInConsole()) {
