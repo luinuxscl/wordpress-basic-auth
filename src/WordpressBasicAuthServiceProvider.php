@@ -31,6 +31,7 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
                 \Luinuxscl\WordpressBasicAuth\Console\StoreCredentialsCommand::class,
                 \Luinuxscl\WordpressBasicAuth\Console\PingWordpressCommand::class,
                 \Luinuxscl\WordpressBasicAuth\Console\ListSitesCommand::class,
+                \Luinuxscl\WordpressBasicAuth\Console\InstallCommand::class,
             ]);
 
             $this->publishes([
@@ -42,6 +43,11 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/wordpress-basic-auth'),
             ], 'wordpress-basic-auth-views');
+
+            // Publish translations
+            $this->publishes([
+                __DIR__ . '/../lang' => base_path('lang/vendor/wordpress-basic-auth'),
+            ], 'wordpress-basic-auth-translations');
         }
     }
 }
