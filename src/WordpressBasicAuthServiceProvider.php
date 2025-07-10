@@ -17,9 +17,10 @@ class WordpressBasicAuthServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'wordpress-basic-auth');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         if (class_exists(\Livewire\Livewire::class)) {
-            // Register Livewire component directly - works in both v2 and v3
+            // Registrar componente de Livewire directamente - funciona en v2 y v3
             \Livewire\Livewire::component(
                 'create-wordpress-credential',
                 \Luinuxscl\WordpressBasicAuth\Livewire\CreateWordpressCredential::class

@@ -14,7 +14,7 @@ class CreateWordpressCredential extends Component
     public $password;
     public $showModal = false;
     public $showButton = true;
-    
+
     public $is_default = false;
 
     protected $rules = [
@@ -62,6 +62,8 @@ class CreateWordpressCredential extends Component
         ]);
 
         $this->reset(['identifier', 'site_url', 'username', 'password', 'is_default', 'showModal']);
+
+        $this->dispatch('refreshWordpressCredentialsTable');
 
         session()->flash('message', 'WordPress credentials created successfully.');
     }
