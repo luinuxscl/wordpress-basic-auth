@@ -1,6 +1,7 @@
 {
     "name": "luinuxscl/wordpress-basic-auth",
-    "description": "Autenticación básica para WordPress en Laravel.",
+    "description": "Autenticación básica para WordPress en Laravel. Proporciona middleware y funcionalidades para la autenticación básica de WordPress.",
+    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
